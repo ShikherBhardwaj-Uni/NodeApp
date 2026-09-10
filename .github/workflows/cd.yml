@@ -30,3 +30,9 @@ jobs:
     
     - name: Docker Image Built
       run: echo "Docker image built successfully."
+
+    - name: Login to Docker
+      run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
+
+    - name: Push Image to Docker Hub
+      run: docker push shikherbhardwaj/node-app:latest
